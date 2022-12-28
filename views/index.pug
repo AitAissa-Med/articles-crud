@@ -1,0 +1,38 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Notre Blog
+    include links
+
+
+    h2 Notre Blog
+    .cards
+        each article in articles
+            .card 
+                .title 
+                    h3.text= article.Title 
+                    .icons 
+                        a(href="/api/update/" + article.id)
+                          i.fa-solid.fa-pen-to-square.update
+                        a(href="/api/articles/remove/" + article.id)  
+                            i.fa.fa-trash.delete 
+                p   
+                    | Auteur : #{article.Author} 
+                    br     
+                    | date de création :  #{article.createdAt}
+                    br  
+                    | date de Modification : #{article.updatedAt}
+
+                .resume
+                    h4.resumeTitle Résumé
+                    p.resumeText= article.Resume 
+                        a(href="/api/articles/show/" + article.id) Lire Plus
+    a(href="/api/articles") 
+        i.fa-solid.fa-home.home 
+    a(href="/api/store") 
+        i.fa-solid.fa-plus.add 
+
+                

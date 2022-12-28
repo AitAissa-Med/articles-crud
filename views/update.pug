@@ -1,0 +1,51 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Edit Article
+        include links
+        style. 
+            
+    body  
+        h2 Notre Blog
+
+        .con 
+            .h3 Edit Article
+            .form
+                input(type='text', id='id', name='articleID', value=`${article._id}`, style='display:none;')
+                label(for='title') Title:
+                input(type='text', id='title', name='Title', value=`${article.Title}`)
+
+                label(for='author') Author:
+                input(type='text', id='author', name='Author', value=`${article.Author}`)
+
+                label(for='resume') Resume:
+                textarea(id='resume', name='Resume')= article.Resume
+
+                label(for='content') Content:
+                textarea(id='content', name='Content', rows="10")= article.Content
+
+                input(type='button', value='Enregistrer', id="btn")
+
+        a(href="/api/articles", id="link") 
+            i.fa-solid.fa-home.home 
+
+    script.
+        $('#btn').click(function(){
+            $.post('/api/articles/update', {
+                id: $('#id').val(),
+                Title : $("#title").val(),
+                Author : $("#author").val(),
+                Resume : $("#resume").val(),
+                Content : $("#content").val(),
+            }, (data) => {
+                console.log(data)
+                if(data.message == "Article Updated Succesfully")
+                    alert('Article Updated')
+            }) 
+        })    
+
+
+                

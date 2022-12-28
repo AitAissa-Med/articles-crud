@@ -1,0 +1,31 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Ajouter Article
+        include links
+        style. 
+            
+    body  
+        h2 Notre Blog
+
+        .con 
+            .h3 Ajouter Article
+            form.form(method='POST', action='/api/articles/store')
+                label(for='title') Title:
+                input(type='text', id='title', name='Title')
+
+                label(for='author') Author:
+                input(type='text', id='author', name='Author')
+
+                label(for='resume') Resume:
+                textarea(id='resume', name='Resume')
+
+                label(for='content') Content:
+                textarea(id='content', name='Content', rows="10")
+
+                input(type='submit', value='Ajouter Article')
+        a(href="/api/articles") 
+            i.fa-solid.fa-home.home         
