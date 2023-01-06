@@ -8,5 +8,4 @@ router.post('/update', ArticleController.update);
 router.get('/remove/:articleID', ArticleController.remove);
 router.post('/store', ArticleController.store);
 
-
 module.exports = router;

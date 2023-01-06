@@ -1,7 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-var $ = require('jquery');
 
 const app = express();
 
@@ -10,7 +9,7 @@ const viewsRouter = require("./routes/viewsRoute");
 
 //connect to mongodb
 mongoose.set('strictQuery', true);
-mongoose.connect("mongodb://localhost:27017/miniProject", {
+mongoose.connect("mongodb+srv://admin:admin@myblogapp.pmfbwyx.mongodb.net/test", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -33,7 +32,9 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
+
 app.use(express.static('public'));
+
 app.use('/views', express.static('views'));
 
 const PORT = 3000;

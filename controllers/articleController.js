@@ -4,9 +4,6 @@ const Article = require('../models/articleModel');
 const index = (req, res, next) => {
     Article.find()
         .then(response => {
-            // res.json({
-            //     response
-            // })
             const articles = response.map(obj => ({
                 id: obj._id,
                 Title: obj.Title,
@@ -19,7 +16,7 @@ const index = (req, res, next) => {
             //Resume = truncateText(Resume);
             res.render(('index'), {
                 articles
-            })
+            });
         })
         .catch(error => {
             res.json({
@@ -56,7 +53,7 @@ const show1 = (req, res, next) => {
     let articleID = req.params.articleID;
 
     Article.findById(articleID)
-        .then(response => {
+        .then(response => {a
             res.render('update', {
                 article: response
             })
